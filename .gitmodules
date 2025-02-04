@@ -1,0 +1,3 @@
+[submodule "CostModelBenchmark/Gluten-CostModel"]
+	path = CostModelBenchmark/Gluten-CostModel
+	url = https://github.com/DamonZhao-sfu/Gluten-CostModel
