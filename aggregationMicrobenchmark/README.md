@@ -2,14 +2,13 @@
 
 Please refer to https://github.com/duckdblabs/db-benchmark
 
-1. Use `Rscript _data/groupby-datagen.R 1e8 1e1 0 0 `to create G1_1e8_1e1_0_0.csv, the file contains 1e8 rows with 1e1 groupby key cardianality.
+1. E.g.: use `Rscript _data/groupby-datagen.R 1e8 1e1 0 0 `to create G1_1e8_1e1_0_0.csv, the file contains 1e8 rows with 1e1 groupby key cardianality.
 
 2. Run the convertCsvToParquet.py to convert the csv file to parquet file.
 
 3. The configuration of the four engines on single node:
 
 
-```
 ## Vanilla Spark
 
 ```
@@ -27,6 +26,7 @@ Please refer to https://github.com/duckdblabs/db-benchmark
   --conf spark.executor.memoryOverhead=4g\
   --driver-memory 40g
 ```
+
 
 ## Spark + Velox
 
@@ -48,6 +48,7 @@ Please refer to https://github.com/duckdblabs/db-benchmark
 --conf spark.executor.memoryOverhead=4g\
 --driver-memory 40g
 ```
+
 
 ## ClickHouse
 
@@ -75,10 +76,11 @@ Please refer to https://github.com/duckdblabs/db-benchmark
   --conf spark.executor.memory=16g\
   --conf spark.executor.memoryOverhead=4g\
   --driver-memory 40g
+
 ```
 
 
-## Comet
+## Blaze
 
 ```
 /localhdd/hza214/spark-3.3.3-bin-hadoop3/bin/spark-shell \
@@ -98,3 +100,4 @@ Please refer to https://github.com/duckdblabs/db-benchmark
   --conf spark.local.dir=/localssd/hza214/sparktmp
 
 ```
+
