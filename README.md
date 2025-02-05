@@ -1,6 +1,8 @@
 # NativeEngineBenchmark
 
+This repo includes the code and experiment in the paper `Understanding the performance of Native Execution Engine: The good, the bad and the solutions`
 
+The experiment includes the performance evaluation of performance-critical operators microbenchmark and TPC-DS  
 
 # Installation of Spark & Accelerator
 
@@ -9,6 +11,8 @@
 Please go to [SparkDownload](https://archive.apache.org/dist/spark/spark-3.3.1/)
 
 ## Download of Apache Gluten & Building of Velox and ClickHouse Backend
+
+Please go to [Gluten](https://github.com/apache/incubator-gluten/) to download the version v1.1.1
 
 For Velox build, please refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md), For ClickHouse build, please refer to [ClickHouseBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/ClickHouse.md)
 
@@ -23,8 +27,10 @@ mvn clean package -Pbackends-velox -Pceleborn -Puniffle -Pspark-3.3 -DskipTests
 
 # ClickHouse Build
 bash ./ep/build-clickhouse/src/build_clickhouse.sh
+export MAVEN_OPTS="-Xmx8g -XX:ReservedCodeCacheSize=2g"
+mvn clean install -Pbackends-clickhouse -Pspark-3.3 -DskipTests -Dcheckstyle.skip
+ls -al backends-clickhouse/target/gluten-XXXXX-spark-3.3-jar-with-dependencies.jar
 ```
-
 
 
 ## Download and Build of Blaze Accelerator
