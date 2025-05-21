@@ -12,7 +12,7 @@ Please go to [SparkDownload](https://archive.apache.org/dist/spark/spark-3.3.1/)
 
 ## Download of Apache Gluten & Building of Velox and ClickHouse Backend
 
-Please go to [Gluten](https://github.com/apache/incubator-gluten/) to download the version v1.1.1
+Please go to [Gluten](https://github.com/apache/incubator-gluten/) to download the version v1.3.0
 
 For Velox build, please refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md), For ClickHouse build, please refer to [ClickHouseBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/ClickHouse.md)
 
