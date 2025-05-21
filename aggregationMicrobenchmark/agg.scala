@@ -25,7 +25,7 @@ df7.createOrReplaceTempView("df7")
 
 val queries = Array(
   "select id1, count(v1) as v1 from df group by id1", 
-  "select id1, COUNT(v1) as v1 from df group by id1", 
+  "select id1, sum(v1) as v1 from df group by id1", 
   //"select id1, id2, sum(v1) as v1 from df group by id1, id2", // 2
   //"select id3, sum(v1) as v1, mean(v3) as v3 from df group by id3",
   //"select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df group by id4", //4
@@ -36,7 +36,7 @@ val queries = Array(
   //"select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from df group by id1, id2, id3, id4, id5, id6"
 )
 
-val tables = Array("df1", "df2","df3","df4", "df5","df6","df7")
+val tables = Array("df1","df2","df3","df4", "df5","df6","df7")
 
 val writer = new PrintWriter(new java.io.File("/localhdd/hza214/BenchmarkPaperCode/agg/countVanilla.txt"))
 

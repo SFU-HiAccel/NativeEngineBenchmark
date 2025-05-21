@@ -23,7 +23,7 @@ val outputDir = "output/"
 val probeTableSize = 64 * 1024 * 1024 // Number of tuples
 // To achieve 20% selectivity, we'll use a keyRange that is 5x smaller than the build table size
 val probeKeyRange = probeTableSize / 5
-val probeTable = spark.sparkContext.parallelize(generateTable(probeTableSize, probeKeyRange)).toDF("k", "v")
+val probeTable = spark.sparkContext.parallelize(generateTable(probeTableSize, probeKeyRange)).toDF("customer_id", "v")
 probeTable.write.mode("overwrite").parquet(s"${outputDir}probe_table.parquet")
 
 val writer = new PrintWriter(new java.io.File("./hashTable.txt"))
@@ -34,7 +34,7 @@ hashTableSizes.foreach { hashTableSize =>
   val numTuples = (hashTableSize / (tupleSize * 2)).toInt // 50% fill rate
   
   // Use the same keyRange as probe table to maintain 20% selectivity
-  val buildTable = spark.sparkContext.parallelize(generateTable(numTuples, probeKeyRange)).toDF("k", "v")
+  val buildTable = spark.sparkContext.parallelize(generateTable(numTuples, probeKeyRange)).toDF("customer_id", "v")
   val buildPath = s"${outputDir}build_table_${hashTableSize / 1024}KB.parquet"
   buildTable.write.mode("overwrite").parquet(buildPath)
 
@@ -43,14 +43,14 @@ hashTableSizes.foreach { hashTableSize =>
   val probeTableParquet = spark.read.parquet(s"${outputDir}probe_table.parquet")
 
   // Step 4: Register tables as views for SQL queries
-  buildTableParquet.createOrReplaceTempView("A")
-  probeTableParquet.createOrReplaceTempView("B")
+  buildTableParquet.createOrReplaceTempView("customer")
+  probeTableParquet.createOrReplaceTempView("store_sales")
 
   // Step 5: Perform the join query
   val result = spark.sql("""
-    SELECT *
-    FROM A, B
-    WHERE A.k = B.k
+SELECT * FROM customer , store_sales WHERE
+customer.customer_id =
+store_sales.customer_id ;
   """)
 
   // Show the result (or save it for analysis)

@@ -1,15 +1,14 @@
-# Generation of TPC-DS dataset
+## Generation of TPC-DS dataset
 Please refer to: https://github.com/apache/incubator-gluten/blob/main/tools/workload/tpcds/README.md
 
-# TPC-DS queries
-Please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
+## TPC-DS queries
+The queries used in the experiment: please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
 
-# Configuratioon Script to Run TPC-DS Benchmark
 
 ## Vanilla Spark
 
 ```
-/localhdd/hza214/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
+/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
   --conf spark.sql.adaptive.enabled=true \
   --conf spark.sql.codegen.wholeStage=true \
   --conf spark.memory.offHeap.enabled=true \
@@ -27,7 +26,7 @@ Please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/glut
 ## Spark + Velox
 
 ```
-/localhdd/hza214/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell   --conf spark.gluten.enabled=true  
+/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell   --conf spark.gluten.enabled=true  
 --conf spark.local.dir=/localssd/hza214
 --conf spark.plugins=org.apache.gluten.GlutenPlugin
 --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager
@@ -48,7 +47,7 @@ Please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/glut
 ## ClickHouse
 
 ```
-/localhdd/hza214/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
+/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
   --conf spark.sql.adaptive.enabled=true \
   --conf spark.sql.codegen.wholeStage=true \
   --conf spark.plugins=org.apache.gluten.GlutenPlugin \
@@ -77,14 +76,14 @@ Please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/glut
 ## Blaze
 
 ```
-/localhdd/hza214/spark-3.3.3-bin-hadoop3/bin/spark-shell \
+/spark-3.3.3-bin-hadoop3/bin/spark-shell \
   --conf spark.files.ignoreCorruptFiles=true\
   --conf spark.blaze.enable=true\
   --conf spark.default.parallelism=200\
   --conf spark.sql.shuffle.partitions=200\
   --conf spark.sql.extensions=org.apache.spark.sql.blaze.BlazeSparkSessionExtension\
   --conf spark.shuffle.manager=org.apache.spark.sql.execution.blaze.shuffle.BlazeShuffleManager\
-  --conf spark.driver.memory=40g\
+  --conf spark.driver.memory=20g\
   --conf spark.executor.cores=4 \
   --conf spark.driver.memoryOverhead=4g\
   --conf spark.executor.memory=16g\
@@ -92,3 +91,8 @@ Please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/glut
   --conf spark.memory.offHeap.enabled=true\
   --conf spark.memory.offHeap.size=20g\
   --conf spark.local.dir=/localssd/hza214/sparktmp
+
+```
+
+## Run TPC-DS Queries
+execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the TPC-DS queries and save the time to a txt file.

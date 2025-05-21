@@ -17,8 +17,6 @@ After the build, put the generated jar file in `package/target/` to the spark's 
 /localhdd/hza214/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell    
 --conf spark.gluten.enabled=true  
 --conf spark.gluten.sql.debug=false  
---conf spark.default.parallelism=200
---conf spark.sql.shuffle.partitions=200  
 --conf spark.gluten.sql.injectNativePlanStringToExplain=false  
 --conf spark.local.dir=/localssd/hza214/sparktmp  
 --conf spark.plugins=org.apache.gluten.GlutenPlugin  
@@ -31,5 +29,5 @@ After the build, put the generated jar file in `package/target/` to the spark's 
 --driver-memory 40g   
 --executor-memory 16g   
 --conf spark.executor.memoryOverhead=4g
---conf  spark.sql.join.preferSortMergeJoin=false 
+--conf spark.sql.join.preferSortMergeJoin=false 
 ```
