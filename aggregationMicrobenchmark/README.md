@@ -101,3 +101,5 @@ Please refer to https://github.com/duckdblabs/db-benchmark
 
 ```
 
+Then execute the agg.scala in the spark-shell (copy and paste).
+
