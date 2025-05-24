@@ -31,3 +31,7 @@ After the build, put the generated jar file in `package/target/` to the spark's 
 --conf spark.executor.memoryOverhead=4g
 --conf spark.sql.join.preferSortMergeJoin=false 
 ```
+
+# Running
+
+Then run the TPC-DS queries with the above Gluten version
