@@ -4,6 +4,8 @@ The cost model version is using Velox as backend. The building of Velox and Glut
 
 
 ```
+git submodule update
+
 ./dev/builddeps-veloxbe.sh build_arrow
 ./dev/builddeps-veloxbe.sh build_velox
 ./dev/builddeps-veloxbe.sh build_gluten_cpp
