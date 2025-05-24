@@ -1,10 +1,5 @@
 # Building the Gluten Project with Velox Project
 
-./dev/builddeps-veloxbe.sh build_arrow
-./dev/builddeps-veloxbe.sh build_velox
-./dev/builddeps-veloxbe.sh build_gluten_cpp
-mvn clean package -Pbackends-velox -Pspark-3.3 -Puniffle -DskipTests
-
 The cost model version is using Velox as backend. The building of Velox and GlutenCPP can refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md)
 
 
