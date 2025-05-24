@@ -29,10 +29,10 @@ After running the spark shell, then run the runORC.scala code
 
 ## FORC Accelerator
 
-1. Please go to [FORC](https://github.com/SFU-HiAccel/FORC) to build the FORC accelerator.
+1. Please go to [FORC](https://github.com/SFU-HiAccel/FORC) to build the FORC accelerator. And download and compile this version of Gluten [Gluten](https://github.com/DamonZhao-sfu/gluten/tree/velox-forc) with the velox-forc branch 
 
 
-2. Build the microbenchmark integrated with FORC accelerator. Please refer to [Microbenchmark](https://github.com/apache/incubator-gluten/blob/main/docs/developers/MicroBenchmarks.md) for further details.
+2. Build the Gluten with microbenchmark integrated with FORC accelerator. Please refer to [Microbenchmark](https://github.com/apache/incubator-gluten/blob/main/docs/developers/MicroBenchmarks.md) for further details.
 
 ```
 ./dev/buildbundle-veloxbe.sh --build_tests=ON --build_benchmarks=ON
