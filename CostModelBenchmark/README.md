@@ -41,4 +41,5 @@ After the build, put the generated jar file in `package/target/` to the spark's 
 
 # Running
 
-Then run the TPC-DS queries with the above Gluten version. Please reuse the [run parquet code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_parquet.scala) or [run orc code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_orc.scala)
+Then run the TPC-DS queries with the above Gluten version. Please reuse the [run parquet code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_parquet.scala) or [run orc code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_orc.scala) and run in the spark-shell(copy and paste)
+ 
