@@ -95,4 +95,4 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
 ```
 
 ## Run TPC-DS Queries
-execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the TPC-DS queries and save the time to a txt file.
+execute run_tpcds_orc.scala or run_tpcds_parquet.scala in the spark shell, which will run all the TPC-DS queries and save the time to a txt file.
