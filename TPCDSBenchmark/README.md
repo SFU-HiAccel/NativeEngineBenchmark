@@ -1,9 +1,4 @@
-## Generation of TPC-DS dataset
-Please refer to: https://github.com/apache/incubator-gluten/blob/main/tools/workload/tpcds/README.md
-
-## TPC-DS queries
-The queries used in the experiment: please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
-
+# Config
 
 ## Vanilla Spark
 
