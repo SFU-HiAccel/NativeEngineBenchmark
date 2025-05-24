@@ -45,7 +45,7 @@ MODE=release # or pre
 mvn clean package -P"${SHIM}" -P"${MODE}"
 ```
 
-## Copy the jar to the Spark's jar directory
+Copy the jar to the Spark's jar directory
 
 ```
 cp gluten-package-1.3.0-SNAPSHOT.jar  /spark-3.3.1/jars/
