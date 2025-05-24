@@ -2,9 +2,14 @@
 
 The cost model version is using Velox as backend. The building of Velox and GlutenCPP can refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md)
 
+The cost model version of Gluten is the submodule in this directory, please use
 
 ```
 git submodule update
+```
+to download the cost model version of Gluten.
+
+```
 
 ./dev/builddeps-veloxbe.sh build_arrow
 ./dev/builddeps-veloxbe.sh build_velox
