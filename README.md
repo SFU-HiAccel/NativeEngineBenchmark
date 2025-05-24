@@ -4,7 +4,7 @@ This repo includes the code and experiment in the paper Understanding the Perfor
 
 The experiment includes the performance evaluation of performance-critical operators microbenchmark and TPC-DS of Vanilla Spark, Spark+Velox backend, Spark+ClickHouse backend and Spark+DataFusion backend. 
 
-# Installation of Spark & Accelerator
+# Software Installations
 
 ## Download Vanilla Spark
 
@@ -54,7 +54,7 @@ cp blaze-engine-spark-3.3-release-4.0.0-SNAPSHOT.jar /spark-3.3.1/jars/
 ```
 
 
-# TPC-DS E2E Benchmark
+# Preparation of TPC-DS E2E Benchmark
 
 ## Generation of TPC-DS dataset
 Please refer to: https://github.com/apache/incubator-gluten/blob/main/tools/workload/tpcds/README.md
@@ -106,7 +106,7 @@ cd ../tpcds
 ## TPC-DS queries
 The queries used in the experiment: please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
 
-# Running Spark clusters
+# Spark Configuration
 
 ## Vanilla Spark
 
@@ -191,3 +191,33 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
 
 ## Run TPC-DS Queries
 Execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the TPC-DS queries and save the time to a txt file.
+
+
+# Experiment
+
+## TPC-DS E2E Profiling
+
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/README.md)
+
+## Microbenchmark of HashJoin
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/hashJoinMicrobenchmark)
+
+## Microbenchmark of HashAggregation
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/aggregationMicrobenchmark)
+
+## Microbenchmark of TableScan
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/selectiveScanMicrobenchmark)
+
+## Cost Model Evaluation
+Please go to [Cost Model Evaluation](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/CostModelBenchmark)
+
+## FPGA Accelerated Evaluation
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/ORCScanCaseStudy)
+
+
+
+
+
+
+
+
