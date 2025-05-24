@@ -199,8 +199,11 @@ Execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the T
 
 Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/README.md)
 
+Run with different engine's configuration and then execute run_tpcds_orc.scala or run_tpcds_parquet.scala in the spark shell (just copy and paste), which will run all the TPC-DS queries and save the time to a txt file.
+
 ## Microbenchmark of HashJoin
 Please go to [Microbenchmark of HashJoin](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/hashJoinMicrobenchmark)
+
 
 ## Microbenchmark of HashAggregation
 Please go to [Microbenchmark of HashAggregation](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/aggregationMicrobenchmark)
