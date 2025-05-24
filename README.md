@@ -108,6 +108,8 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
 
 # Spark Configuration
 
+Belows are the command to run the spark clusters.
+
 ## Vanilla Spark
 
 ```
