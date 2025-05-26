@@ -2,6 +2,8 @@
 
 Please refer to https://github.com/duckdblabs/db-benchmark
 
+0. git clone https://github.com/duckdblabs/db-benchmark.git
+
 1. E.g.: use `Rscript _data/groupby-datagen.R 1e8 1e1 0 0 `to create G1_1e8_1e1_0_0.csv, the file contains 1e8 rows with 1e1 groupby key cardianality.
 
 2. Run the convertCsvToParquet.py to convert the csv file to parquet file.
