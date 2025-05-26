@@ -10,7 +10,12 @@ python3 generateOrc.py
 
 Please go to [RAPIDSDownload](https://nvidia.github.io/spark-rapids/docs/download.html) to download the RAPIDS Accelerator, then put the jar under the /jars directory of Spark.
 
+
+
 ```
+wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/24.08.0/rapids-4-spark_2.12-24.08.1.jar
+
+
 ./spark-shell
 --conf spark.executor.cores=4        
 --conf spark.rapids.sql.concurrentGpuTasks=4        
