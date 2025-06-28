@@ -1,6 +1,6 @@
-# NativeEngineBenchmark
+# Spark Native Execution: The Good, the Bad, and How to Fix It
 
-This repo includes the code and experiment in the paper Understanding the Performance of Spark Native Execution: The Good, the Bad, and How to Fix It
+This repo includes the code and experiment in the paper Understanding the Performance of **Spark Native Execution: The Good, the Bad, and How to Fix It**
 
 The experiment includes the performance evaluation of performance-critical operators microbenchmark and TPC-DS of Vanilla Spark, Spark+Velox backend, Spark+ClickHouse backend and Spark+DataFusion backend. 
 
