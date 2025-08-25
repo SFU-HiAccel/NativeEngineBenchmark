@@ -21,22 +21,7 @@
 ## Spark + Velox
 
 ```
-/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell   --conf spark.gluten.enabled=true  
---conf spark.local.dir=/localssd/hza214
---conf spark.plugins=org.apache.gluten.GlutenPlugin
---conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager
---conf spark.sql.adaptive.enabled=true \
---conf spark.sql.codegen.wholeStage=true \
---conf spark.memory.offHeap.enabled=true \
---conf spark.memory.offHeap.size=20g \
---executor-cores 4 \
---conf spark.local.dir=/localssd/hza214 \ 
---conf spark.default.parallelism=200\
---conf spark.sql.shuffle.partitions=200\
---conf spark.driver.memoryOverhead=4g\
---conf spark.executor.memory=16g\
---conf spark.executor.memoryOverhead=4g\
---driver-memory 40g
+./spark-shell --conf spark.gluten.enabled=true  --conf spark.plugins=org.apache.gluten.GlutenPlugin --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.default.parallelism=200 --conf spark.sql.shuffle.partitions=200 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --conf spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --conf spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --driver-memory 40g 
 ```
 
 ## ClickHouse
