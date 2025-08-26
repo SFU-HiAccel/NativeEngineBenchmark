@@ -1,5 +1,16 @@
 # Config
 
+## ENV
+
+```
+export CXX=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-g++
+export CC=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-gcc
+export LD_LIBRARY_PATH=$(conda info --root)/envs/velox-build/lib:$LD_LIBRARY_PATH
+export CPATH=$(conda info --root)/envs/velox-build/include
+```
+
+
+
 ## Vanilla Spark
 
 ```
