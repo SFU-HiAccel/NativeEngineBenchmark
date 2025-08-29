@@ -35,6 +35,29 @@ export CPATH=$(conda info --root)/envs/velox-build/include
 ./spark-shell --conf spark.gluten.enabled=true  --conf spark.plugins=org.apache.gluten.GlutenPlugin --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.default.parallelism=200 --conf spark.sql.shuffle.partitions=200 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --conf spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --conf spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --driver-memory 40g 
 ```
 
+## Velox dockerfile
+
+```
+FROM apache/gluten:vcpkg-centos-7
+
+RUN source /opt/rh/devtoolset-11/enable && \
+    git clone https://github.com/apache/incubator-gluten.git && \
+    cd incubator-gluten && \
+    ./dev/builddeps-veloxbe.sh --run_setup_script=OFF --enable_s3=ON --enable_gcs=ON --enable_abfs=ON --enable_vcpkg=ON --build_arrow=OFF && \
+    mvn clean package -Pbackends-velox -Pspark-3.5 -DskipTests
+```
+
+# sudo docker build --network=host -t glutenimage -f dockerfile .
+
+# sudo docker run -it  --network=host   -v /localhdd/hza214/spark-3.5.5-bin-hadoop3:/localhdd/hza214/spark-3.5.5-bin-hadoop3 -v /mnt/glusterfs/users/hza214/parquet_1T:/mnt/glusterfs/users/hza214/parquet_1T -v /localhdd/hza214/gluten:/localhdd/hza214/gluten -v /localssd/hza214:/localssd/hza214  glutenimage
+
+
+
+
+
+
+
+
 ## ClickHouse
 
 ```
