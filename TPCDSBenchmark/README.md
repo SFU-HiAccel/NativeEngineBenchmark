@@ -51,16 +51,10 @@ RUN source /opt/rh/devtoolset-11/enable && \
 
 # sudo docker run -it  --network=host   -v /localhdd/hza214/spark-3.5.5-bin-hadoop3:/localhdd/hza214/spark-3.5.5-bin-hadoop3 -v /mnt/glusterfs/users/hza214/parquet_1T:/mnt/glusterfs/users/hza214/parquet_1T -v /localhdd/hza214/gluten:/localhdd/hza214/gluten -v /localssd/hza214:/localssd/hza214  glutenimage
 
-
-
-
-
-
-
-
 ## ClickHouse
 
 ```
+export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-local-engine/libch.so
 /spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
   --conf spark.sql.adaptive.enabled=true \
   --conf spark.sql.codegen.wholeStage=true \
