@@ -53,6 +53,8 @@ RUN source /opt/rh/devtoolset-11/enable && \
 
 ## ClickHouse
 
+ensc-rcl-3 as master, hacc-2, rcl2,rcl3,rcl4 as the worker
+
 ```
 export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-local-engine/libch.so
 /spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
