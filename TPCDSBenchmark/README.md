@@ -14,19 +14,7 @@ export CPATH=$(conda info --root)/envs/velox-build/include
 ## Vanilla Spark
 
 ```
-/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
-  --conf spark.sql.adaptive.enabled=true \
-  --conf spark.sql.codegen.wholeStage=true \
-  --conf spark.memory.offHeap.enabled=true \
-  --conf spark.memory.offHeap.size=20g \
-  --executor-cores 4 \
-  --conf spark.local.dir=/localssd/hza214 \ 
-  --conf spark.default.parallelism=200\
-  --conf spark.sql.shuffle.partitions=200\
-  --conf spark.driver.memoryOverhead=4g\
-  --conf spark.executor.memory=16g\
-  --conf spark.executor.memoryOverhead=4g\
-  --driver-memory 40g
+/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.local.dir=/localssd/hza214 --conf spark.default.parallelism=200 --conf spark.sql.shuffle.partitions=200 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --driver-memory 40gRetryClaude does not have the ability to run the code it generates yet.
 ```
 
 ## Spark + Velox
