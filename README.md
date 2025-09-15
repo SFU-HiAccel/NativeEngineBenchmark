@@ -187,19 +187,7 @@ Belows are the command to run the spark clusters.
 ## Blaze
 
 ```
-/spark-3.3.3-bin-hadoop3/bin/spark-shell \
-  --conf spark.files.ignoreCorruptFiles=true\
-  --conf spark.blaze.enable=true\
-  --conf spark.sql.extensions=org.apache.spark.sql.blaze.BlazeSparkSessionExtension\
-  --conf spark.shuffle.manager=org.apache.spark.sql.execution.blaze.shuffle.BlazeShuffleManager\
-  --conf spark.driver.memory=20g\
-  --conf spark.executor.cores=4 \
-  --conf spark.driver.memoryOverhead=4g\
-  --conf spark.executor.memory=16g\
-  --conf spark.executor.memoryOverhead=4g\
-  --conf spark.memory.offHeap.enabled=true\
-  --conf spark.memory.offHeap.size=20g\
-  --conf spark.local.dir=/localssd/hza214/sparktmp
+./spark-shell --conf spark.sql.autoBroadcastJoinThreshold=-1 --conf spark.auron.smjfallback.enable=false --conf spark.driver.memory=20g -park.driver.memoryOverhead=4096 --conf spark.executor.instances=10000 --conf spark.dynamicallocation.maxExecutors=10000 --conf spark.executor.cores=8 --conf spark.io.compression.codec=lz4 --conf spark.sql.parquet.compression.codec=zstd --conf spark.executor.memory=8g --conf spark.executor.memoryOverhead=16384 --conf spark.shuffle.manager=org.apache.spark.sql.execution.auron.shuffle.AuronShuffleManager --conf spark.memory.offHeap.enabled=false --conf spark.auron.memoryFraction=0.8 --conf spark.auron.process.vmrss.memoryFraction=0.8 --conf spark.auron.tokio.worker.threads.per.cpu=1 --conf spark.auron.forceShuffledHashJoin=true --conf spark.auron.smjfallback.mem.threshold=512000000 --conf spark.auron.udafFallback.enable=true --conf spark.auron.partialAggSkipping.skipSpill=true
 
 ```
 
