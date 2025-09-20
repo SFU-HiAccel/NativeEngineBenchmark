@@ -78,9 +78,6 @@ export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-lo
   --conf spark.memory.offHeap.size=10g \
 ```
 
-
-
-
 ## Blaze
 
 ```
@@ -101,6 +98,34 @@ export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-lo
   --conf spark.local.dir=/localssd/hza214/sparktmp
 
 ```
+
+## Ablation Study
+
+### Spark 4
+
+```
+/localhdd/hza214/spark-4.1.0-preview1-bin-hadoop3/bin/spark-shell \
+  --conf spark.sql.adaptive.enabled=true \
+  --conf spark.sql.codegen.wholeStage=true \
+  --conf spark.memory.offHeap.enabled=true \
+  --conf spark.memory.offHeap.size=20g \
+  --executor-cores 4 \
+  --conf spark.local.dir=/localssd/hza214 \
+  --conf spark.driver.memoryOverhead=4g \
+  --conf spark.executor.memory=16g \
+  --conf spark.executor.memoryOverhead=4g \
+  --driver-memory 40g
+```
+
+### Spark 3.5
+
+
+
+### Spark 3.4
+
+
+
+
 
 ## Run TPC-DS Queries
 execute run_tpcds_orc.scala or run_tpcds_parquet.scala in the spark shell, which will run all the TPC-DS queries and save the time to a txt file.
