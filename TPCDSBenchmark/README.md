@@ -35,9 +35,10 @@ RUN source /opt/rh/devtoolset-11/enable && \
     mvn clean package -Pbackends-velox -Pspark-3.5 -DskipTests
 ```
 
-# sudo docker build --network=host -t glutenimage -f dockerfile .
 
-# sudo docker run -it  --network=host   -v /localhdd/hza214/spark-3.5.5-bin-hadoop3:/localhdd/hza214/spark-3.5.5-bin-hadoop3 -v /mnt/glusterfs/users/hza214/parquet_1T:/mnt/glusterfs/users/hza214/parquet_1T -v /localhdd/hza214/gluten:/localhdd/hza214/gluten -v /localssd/hza214:/localssd/hza214  glutenimage
+sudo docker build --network=host -t glutenimage -f dockerfile .
+
+sudo docker run -it  --network=host   -v /localhdd/hza214/spark-3.5.5-bin-hadoop3:/localhdd/hza214/spark-3.5.5-bin-hadoop3 -v /mnt/glusterfs/users/hza214/parquet_1T:/mnt/glusterfs/users/hza214/parquet_1T -v /localhdd/hza214/gluten:/localhdd/hza214/gluten -v /localssd/hza214:/localssd/hza214  glutenimage
 
 ## ClickHouse
 
