@@ -27,6 +27,15 @@ wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/24.08.0/rapid
 
 After running the spark shell, run the runORC.scala code
 
+## C++ Cudf benchmark
+
+```
+mkdir build && cd build
+cmake ..
+make
+```
+
+
 ## Vanilla Spark/Spark+Velox/Spark+ClickHouse
 
 The software and configs are the same as selectiveScanMicrobenchmark.
