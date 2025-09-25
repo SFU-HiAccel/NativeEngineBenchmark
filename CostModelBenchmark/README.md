@@ -1,8 +1,16 @@
 # Building the Gluten Project with Velox Project
 
-The cost model version is using Velox as backend. The details of building of Velox and GlutenCPP can refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md)
+The cost model version is using Velox as backend. The building of Velox and GlutenCPP can refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md)
+
+The cost model version of Gluten is the submodule in this directory, please use
 
 ```
+git submodule update
+```
+to download the cost model version of Gluten.
+
+```
+
 ./dev/builddeps-veloxbe.sh build_arrow
 ./dev/builddeps-veloxbe.sh build_velox
 ./dev/builddeps-veloxbe.sh build_gluten_cpp
@@ -30,3 +38,8 @@ After the build, put the generated jar file in `package/target/` to the spark's 
 --conf spark.executor.memoryOverhead=4g
 --conf spark.sql.join.preferSortMergeJoin=false 
 ```
+
+# Running
+
+Then run the TPC-DS queries with the above Gluten version. Please reuse the [run parquet code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_parquet.scala) or [run orc code](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/run_tpcds_orc.scala) and run in the spark-shell(copy and paste)
+ 

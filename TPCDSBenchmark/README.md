@@ -1,52 +1,51 @@
-## Generation of TPC-DS dataset
-Please refer to: https://github.com/apache/incubator-gluten/blob/main/tools/workload/tpcds/README.md
+# Config
 
-## TPC-DS queries
-The queries used in the experiment: please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
+## ENV
+
+```
+export CXX=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-g++
+export CC=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-gcc
+export LD_LIBRARY_PATH=$(conda info --root)/envs/velox-build/lib:$LD_LIBRARY_PATH
+export CPATH=$(conda info --root)/envs/velox-build/include
+```
+
 
 
 ## Vanilla Spark
 
 ```
-/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
-  --conf spark.sql.adaptive.enabled=true \
-  --conf spark.sql.codegen.wholeStage=true \
-  --conf spark.memory.offHeap.enabled=true \
-  --conf spark.memory.offHeap.size=20g \
-  --executor-cores 4 \
-  --conf spark.local.dir=/localssd/hza214 \ 
-  --conf spark.default.parallelism=200\
-  --conf spark.sql.shuffle.partitions=200\
-  --conf spark.driver.memoryOverhead=4g\
-  --conf spark.executor.memory=16g\
-  --conf spark.executor.memoryOverhead=4g\
-  --driver-memory 40g
+/localhdd/hza214/spark-3.3.1-bin-hadoop2-ck/bin/spark-shell --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.local.dir=/localssd/hza214 --conf spark.default.parallelism=200 --conf spark.sql.shuffle.partitions=200 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --driver-memory 40g
 ```
 
 ## Spark + Velox
 
 ```
-/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell   --conf spark.gluten.enabled=true  
---conf spark.local.dir=/localssd/hza214
---conf spark.plugins=org.apache.gluten.GlutenPlugin
---conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager
---conf spark.sql.adaptive.enabled=true \
---conf spark.sql.codegen.wholeStage=true \
---conf spark.memory.offHeap.enabled=true \
---conf spark.memory.offHeap.size=20g \
---executor-cores 4 \
---conf spark.local.dir=/localssd/hza214 \ 
---conf spark.default.parallelism=200\
---conf spark.sql.shuffle.partitions=200\
---conf spark.driver.memoryOverhead=4g\
---conf spark.executor.memory=16g\
---conf spark.executor.memoryOverhead=4g\
---driver-memory 40g
+./spark-shell --conf spark.gluten.enabled=true  --conf spark.plugins=org.apache.gluten.GlutenPlugin --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.default.parallelism=200 --conf spark.sql.shuffle.partitions=200 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --conf spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --conf spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" --driver-memory 40g 
 ```
+
+## Velox dockerfile
+
+```
+FROM apache/gluten:vcpkg-centos-7
+
+RUN source /opt/rh/devtoolset-11/enable && \
+    git clone https://github.com/apache/incubator-gluten.git && \
+    cd incubator-gluten && \
+    ./dev/builddeps-veloxbe.sh --run_setup_script=OFF --enable_s3=ON --enable_gcs=ON --enable_abfs=ON --enable_vcpkg=ON --build_arrow=OFF && \
+    mvn clean package -Pbackends-velox -Pspark-3.5 -DskipTests
+```
+
+
+sudo docker build --network=host -t glutenimage -f dockerfile .
+
+sudo docker run -it  --network=host   -v /localhdd/hza214/spark-3.5.5-bin-hadoop3:/localhdd/hza214/spark-3.5.5-bin-hadoop3 -v /mnt/glusterfs/users/hza214/parquet_1T:/mnt/glusterfs/users/hza214/parquet_1T -v /localhdd/hza214/gluten:/localhdd/hza214/gluten -v /localssd/hza214:/localssd/hza214  glutenimage
 
 ## ClickHouse
 
+ensc-rcl-3 as master, hacc-2, rcl2,rcl3,rcl4 as the worker
+
 ```
+export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-local-engine/libch.so
 /spark-3.3.1-bin-hadoop2-ck/bin/spark-shell\
   --conf spark.sql.adaptive.enabled=true \
   --conf spark.sql.codegen.wholeStage=true \
@@ -72,6 +71,13 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
   --driver-memory 40g
 ```
 
+```
+export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-local-engine/libch.so
+/localhdd/hza214/spark-3.5.5-bin-hadoop3/bin/spark-shell \
+  --conf spark.plugins=org.apache.gluten.GlutenPlugin \
+  --conf spark.memory.offHeap.enabled=true \
+  --conf spark.memory.offHeap.size=10g \
+```
 
 ## Blaze
 
@@ -94,5 +100,27 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
 
 ```
 
+## Ablation Study
+
+### Spark 4
+
+```
+/localhdd/hza214/spark-4.0.0-preview1-bin-hadoop3/bin/spark-shell \
+  --conf spark.sql.adaptive.enabled=true \
+  --conf spark.sql.codegen.wholeStage=true \
+  --conf spark.memory.offHeap.enabled=true \
+  --conf spark.memory.offHeap.size=20g \
+  --executor-cores 4 \
+  --conf spark.local.dir=/localssd/hza214 \
+  --conf spark.driver.memoryOverhead=4g \
+  --conf spark.executor.memory=16g \
+  --conf spark.executor.memoryOverhead=4g \
+  --driver-memory 40g
+```
+
+
+
+
+
 ## Run TPC-DS Queries
-execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the TPC-DS queries and save the time to a txt file.
+execute run_tpcds_orc.scala or run_tpcds_parquet.scala in the spark shell, which will run all the TPC-DS queries and save the time to a txt file.

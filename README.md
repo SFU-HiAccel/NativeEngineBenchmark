@@ -1,20 +1,32 @@
-# NativeEngineBenchmark
+# Spark Native Execution: The Good, the Bad, and How to Fix It
 
-This repo includes the code and experiment in the paper `Understanding the performance of Native Execution Engine: The good, the bad and the solutions`
+This repo includes the code and experiment in the paper Understanding the Performance of **Spark Native Execution: The Good, the Bad, and How to Fix It**
 
 The experiment includes the performance evaluation of performance-critical operators microbenchmark and TPC-DS of Vanilla Spark, Spark+Velox backend, Spark+ClickHouse backend and Spark+DataFusion backend. 
 
-# Installation of Spark & Accelerator
+# Software Installations
 
 ## Download Vanilla Spark
 
-Please go to [SparkDownload](https://archive.apache.org/dist/spark/spark-3.3.1/)
+Please go to [SparkDownload](https://archive.apache.org/dist/spark/spark-3.3.1/), download spark-3.3.1
+
+```
+wget https://archive.apache.org/dist/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
+```
+
 
 ## Download of Apache Gluten & Building of Velox and ClickHouse Backend
 
 Please go to [Gluten](https://github.com/apache/incubator-gluten/) to download the version v1.3.0
 
-For Velox build, please refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md), For ClickHouse build, please refer to [ClickHouseBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/ClickHouse.md)
+```
+wget https://github.com/apache/incubator-gluten/releases/download/v1.1.1/gluten-velox-bundle-spark3.3_2.12-1.1.1.jar
+
+cp gluten-velox-bundle-spark3.3_2.12-1.1.1.jar /spark-3.3.1/jars/
+
+```
+
+Or you can build the Gluten on your own server. For Velox build, please refer to [VeloxBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/Velox.md), For ClickHouse build, please refer to [ClickHouseBuild](https://github.com/apache/incubator-gluten/blob/main/docs/get-started/ClickHouse.md)
 
 
 ```
@@ -45,7 +57,7 @@ MODE=release # or pre
 mvn clean package -P"${SHIM}" -P"${MODE}"
 ```
 
-## Copy the jar to the Spark's jar directory
+Copy the jar to the Spark's jar directory
 
 ```
 cp gluten-package-1.3.0-SNAPSHOT.jar  /spark-3.3.1/jars/
@@ -54,7 +66,7 @@ cp blaze-engine-spark-3.3-release-4.0.0-SNAPSHOT.jar /spark-3.3.1/jars/
 ```
 
 
-# TPC-DS E2E Benchmark
+# Preparation of TPC-DS E2E Benchmark
 
 ## Generation of TPC-DS dataset
 Please refer to: https://github.com/apache/incubator-gluten/blob/main/tools/workload/tpcds/README.md
@@ -106,7 +118,9 @@ cd ../tpcds
 ## TPC-DS queries
 The queries used in the experiment: please refer to: https://github.com/apache/incubator-gluten/tree/main/tools/gluten-it/common/src/main/resources/tpcds-queries
 
-# Running Spark clusters
+# Spark Configuration
+
+Belows are the command to run the spark clusters.
 
 ## Vanilla Spark
 
@@ -173,21 +187,44 @@ The queries used in the experiment: please refer to: https://github.com/apache/i
 ## Blaze
 
 ```
-/spark-3.3.3-bin-hadoop3/bin/spark-shell \
-  --conf spark.files.ignoreCorruptFiles=true\
-  --conf spark.blaze.enable=true\
-  --conf spark.sql.extensions=org.apache.spark.sql.blaze.BlazeSparkSessionExtension\
-  --conf spark.shuffle.manager=org.apache.spark.sql.execution.blaze.shuffle.BlazeShuffleManager\
-  --conf spark.driver.memory=20g\
-  --conf spark.executor.cores=4 \
-  --conf spark.driver.memoryOverhead=4g\
-  --conf spark.executor.memory=16g\
-  --conf spark.executor.memoryOverhead=4g\
-  --conf spark.memory.offHeap.enabled=true\
-  --conf spark.memory.offHeap.size=20g\
-  --conf spark.local.dir=/localssd/hza214/sparktmp
+./spark-shell --conf spark.sql.autoBroadcastJoinThreshold=-1 --conf spark.auron.smjfallback.enable=false --conf spark.driver.memory=20g -park.driver.memoryOverhead=4096 --conf spark.executor.instances=10000 --conf spark.dynamicallocation.maxExecutors=10000 --conf spark.executor.cores=8 --conf spark.io.compression.codec=lz4 --conf spark.sql.parquet.compression.codec=zstd --conf spark.executor.memory=8g --conf spark.executor.memoryOverhead=16384 --conf spark.shuffle.manager=org.apache.spark.sql.execution.auron.shuffle.AuronShuffleManager --conf spark.memory.offHeap.enabled=false --conf spark.auron.memoryFraction=0.8 --conf spark.auron.process.vmrss.memoryFraction=0.8 --conf spark.auron.tokio.worker.threads.per.cpu=1 --conf spark.auron.forceShuffledHashJoin=true --conf spark.auron.smjfallback.mem.threshold=512000000 --conf spark.auron.udafFallback.enable=true --conf spark.auron.partialAggSkipping.skipSpill=true
 
 ```
 
 ## Run TPC-DS Queries
 Execute run_tpcds_orc.scala or run_tpcds_parquet.scala, which will run all the TPC-DS queries and save the time to a txt file.
+
+
+# Experiment
+
+## TPC-DS E2E Profiling
+
+Please go to [TPC-DS E2E Profiling](https://github.com/SFU-HiAccel/NativeEngineBenchmark/blob/main/TPCDSBenchmark/README.md)
+
+Run with different engine's configuration and then execute run_tpcds_orc.scala or run_tpcds_parquet.scala in the spark shell (just copy and paste), which will run all the TPC-DS queries and save the time to a txt file.
+
+## Microbenchmark of HashJoin
+Please go to [Microbenchmark of HashJoin](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/hashJoinMicrobenchmark)
+
+
+## Microbenchmark of HashAggregation
+Please go to [Microbenchmark of HashAggregation](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/aggregationMicrobenchmark)
+
+## Microbenchmark of TableScan
+Please go to [Microbenchmark of TableScan](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/selectiveScanMicrobenchmark)
+
+## Cost Model Evaluation
+Please go to [Cost Model Evaluation](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/CostModelBenchmark)
+
+## FPGA Accelerated Evaluation
+Please go to [FPGA Accelerated Evaluation](https://github.com/SFU-HiAccel/NativeEngineBenchmark/tree/main/ORCScanCaseStudy)
+
+## Benchmark paper code
+
+/localhdd/hza214/BenchmarkPaperCode rcl-3
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 # Configuration
 
-```
+
 ## Vanilla Spark
 
 ```
@@ -89,3 +89,6 @@
   --conf spark.local.dir=/localssd/hza214/sparktmp
 
 ```
+
+
+Then execute the join.scala in the spark shell.

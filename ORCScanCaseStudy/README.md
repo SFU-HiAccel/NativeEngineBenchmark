@@ -10,7 +10,12 @@ python3 generateOrc.py
 
 Please go to [RAPIDSDownload](https://nvidia.github.io/spark-rapids/docs/download.html) to download the RAPIDS Accelerator, then put the jar under the /jars directory of Spark.
 
+
+
 ```
+wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/24.08.0/rapids-4-spark_2.12-24.08.1.jar
+
+
 ./spark-shell
 --conf spark.executor.cores=4        
 --conf spark.rapids.sql.concurrentGpuTasks=4        
@@ -29,7 +34,7 @@ After running the spark shell, then run the runORC.scala code
 
 ## FORC Accelerator
 
-1. Please go to [FORC](https://github.com/SFU-HiAccel/FORC) to build the FORC accelerator.
+1. Please go to [FORC](https://github.com/SFU-HiAccel/FORC) to build the FORC accelerator. And download and compile this version of Gluten [Gluten](https://github.com/DamonZhao-sfu/gluten/tree/velox-forc) with the velox-forc branch 
 
 
 2. 
