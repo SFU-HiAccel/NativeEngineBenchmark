@@ -105,7 +105,7 @@ export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-lo
 ### Spark 4
 
 ```
-/localhdd/hza214/spark-4.1.0-preview1-bin-hadoop3/bin/spark-shell \
+/localhdd/hza214/spark-4.0.0-preview1-bin-hadoop3/bin/spark-shell \
   --conf spark.sql.adaptive.enabled=true \
   --conf spark.sql.codegen.wholeStage=true \
   --conf spark.memory.offHeap.enabled=true \
@@ -117,12 +117,6 @@ export LD_PRELOAD=/localhdd/hza214/incubator-gluten/cpp-ch/build/utils/extern-lo
   --conf spark.executor.memoryOverhead=4g \
   --driver-memory 40g
 ```
-
-### Spark 3.5
-
-
-
-### Spark 3.4
 
 
 
