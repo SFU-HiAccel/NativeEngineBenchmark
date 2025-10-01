@@ -92,3 +92,12 @@
 
 
 Then execute the join.scala in the spark shell.
+
+
+## Build Velox
+
+bash ./buildbundle-veloxbe.sh --build_arrow=OFF --run_setup_script=OFF
+
+
+/localhdd/hza214/spark-3.3.1-bin-hadoop3-velox/bin$ ./spark-shell --conf spark.gluten.enabled=true --conf spark.local.dir=/localssd/hza214 --crk.plugins=org.apache.gluten.GlutenPlugin --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager --conf spark.sql.adaptive.enabled=true --conf spark.sql.codegen.wholeStage=true --conf spark.memory.offHeap.enabled=true --conf spark.memory.offHeap.size=20g --executor-cores 4 --conf spark.default.parallelism=48 --conf spark.sql.shuffle.partitions=48 --conf spark.driver.memoryOverhead=4g --conf spark.executor.memory=16g --conf spark.executor.memoryOverhead=4g --driver-memory 40g
+
