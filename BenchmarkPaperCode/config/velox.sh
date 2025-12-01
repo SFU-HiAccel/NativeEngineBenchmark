@@ -1,0 +1,6 @@
+export CXX=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-g++
+export CC=$(conda info --root)/envs/velox-build/bin/x86_64-conda-linux-gnu-gcc
+export LD_LIBRARY_PATH=$(conda info --root)/envs/velox-build/lib:$LD_LIBRARY_PATH
+export CPATH=$(conda info --root)/envs/velox-build/include
+
+/localhdd/hza214/spark-3.3.1-bin-hadoop3-velox/bin/spark-shell   --conf spark.gluten.enabled=true  --conf spark.local.dir=/localssd/hza214  --conf spark.plugins=org.apache.gluten.GlutenPlugin  --conf spark.memory.offHeap.enabled=true   --conf spark.memory.offHeap.size=40g   --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager  --conf spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"  --conf spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"  --conf spark.default.parallelism=48  --conf spark.sql.shuffle.partitions=48  --conf spark.executor.cores=4   --conf spark.executor.memoryOverhead=4g --executor-memory 16g --driver-memory 10g

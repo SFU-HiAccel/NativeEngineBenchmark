@@ -1,0 +1,42 @@
+Query: select id1, count(v1) as v1 from df1 group by id1
+Run 1 Duration: 2.751139246 seconds
+Run 2 Duration: 0.684138688 seconds
+Run 3 Duration: 0.509274084 seconds
+Average Duration: 0.509274084 seconds
+
+Query: select id1, count(v1) as v1 from df2 group by id1
+Run 1 Duration: 0.571346695 seconds
+Run 2 Duration: 0.505863654 seconds
+Run 3 Duration: 0.649721116 seconds
+Average Duration: 0.649721116 seconds
+
+Query: select id1, count(v1) as v1 from df3 group by id1
+Run 1 Duration: 0.572273798 seconds
+Run 2 Duration: 0.58713961 seconds
+Run 3 Duration: 0.718738175 seconds
+Average Duration: 0.718738175 seconds
+
+Query: select id1, count(v1) as v1 from df4 group by id1
+Run 1 Duration: 1.180708772 seconds
+Run 2 Duration: 0.799718133 seconds
+Run 3 Duration: 0.687454041 seconds
+Average Duration: 1.180708772 seconds
+
+Query: select id1, count(v1) as v1 from df5 group by id1
+Run 1 Duration: 1.736323691 seconds
+Run 2 Duration: 1.442504232 seconds
+Run 3 Duration: 1.657013071 seconds
+Average Duration: 1.6119469979999999 seconds
+
+Query: select id1, count(v1) as v1 from df6 group by id1
+Run 1 Duration: 2.778226693 seconds
+Run 2 Duration: 2.651136887 seconds
+Run 3 Duration: 2.694608407 seconds
+Average Duration: 2.7079906623333336 seconds
+
+Query: select id1, count(v1) as v1 from df7 group by id1
+Run 1 Duration: 4.42405649 seconds
+Run 2 Duration: 4.24895588 seconds
+Run 3 Duration: 4.178629146 seconds
+Average Duration: 4.283880505333332 seconds
+

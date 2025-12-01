@@ -1,0 +1,42 @@
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df1 group by id4
+Run 1 Duration: 3.364253302 seconds
+Run 2 Duration: 0.379429871 seconds
+Run 3 Duration: 0.315737539 seconds
+Average Duration: 1.3531402373333332 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df2 group by id4
+Run 1 Duration: 0.325887237 seconds
+Run 2 Duration: 0.301697225 seconds
+Run 3 Duration: 0.314155374 seconds
+Average Duration: 0.3139132786666667 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df3 group by id4
+Run 1 Duration: 0.371825802 seconds
+Run 2 Duration: 0.397793858 seconds
+Run 3 Duration: 0.368473059 seconds
+Average Duration: 0.3793642396666667 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df4 group by id4
+Run 1 Duration: 0.33196084 seconds
+Run 2 Duration: 0.374108723 seconds
+Run 3 Duration: 0.331483884 seconds
+Average Duration: 0.345851149 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df5 group by id4
+Run 1 Duration: 0.383250999 seconds
+Run 2 Duration: 0.398162982 seconds
+Run 3 Duration: 0.422040203 seconds
+Average Duration: 0.40115139466666666 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df6 group by id4
+Run 1 Duration: 0.769046529 seconds
+Run 2 Duration: 0.809243263 seconds
+Run 3 Duration: 0.842333131 seconds
+Average Duration: 0.8068743076666666 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df7 group by id4
+Run 1 Duration: 0.937732475 seconds
+Run 2 Duration: 0.972901092 seconds
+Run 3 Duration: 1.01600618 seconds
+Average Duration: 0.9755465823333335 seconds
+

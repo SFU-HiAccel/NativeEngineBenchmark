@@ -1,0 +1,162 @@
+Query: select id1, sum(v1) as v1 from df1 group by id1
+Run 1 Duration: 2.532529022 seconds
+Run 2 Duration: 0.30289769 seconds
+Run 3 Duration: 0.232161311 seconds
+Average Duration: 1.022529341 seconds
+
+Query: select id1, id2, sum(v1) as v1 from df1 group by id1, id2
+Run 1 Duration: 0.310298922 seconds
+Run 2 Duration: 0.276682773 seconds
+Run 3 Duration: 0.23350612 seconds
+Average Duration: 0.27349593833333335 seconds
+
+Query: select id3, sum(v1) as v1, mean(v3) as v3 from df1 group by id3
+Run 1 Duration: 0.987908006 seconds
+Run 2 Duration: 0.734157474 seconds
+Run 3 Duration: 0.680333705 seconds
+Average Duration: 0.8007997283333333 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df1 group by id4
+Run 1 Duration: 0.280519023 seconds
+Run 2 Duration: 0.260891879 seconds
+Run 3 Duration: 0.221359813 seconds
+Average Duration: 0.254256905 seconds
+
+Query: select id6, sum(v1) as v1, sum(v2) as v2, sum(v3) as v3 from df1 group by id6
+Run 1 Duration: 0.676733663 seconds
+Run 2 Duration: 0.68470797 seconds
+Run 3 Duration: 0.656397868 seconds
+Average Duration: 0.6726131670000001 seconds
+
+Query: select id3, max(v1) - min(v2) as range_v1_v2 from df1 group by id3
+Run 1 Duration: 0.841272808 seconds
+Run 2 Duration: 0.641785635 seconds
+Run 3 Duration: 0.602797508 seconds
+Average Duration: 0.6952853170000001 seconds
+
+Query: select id6, largest2_v3 from (select id6, v3 as largest2_v3, row_number() over (partition by id6 order by v3 desc) as order_v3 from df1 where v3 is not null) sub_query where order_v3 <= 2
+Run 1 Duration: 0.864121584 seconds
+Run 2 Duration: 0.725308056 seconds
+Run 3 Duration: 0.600488837 seconds
+Average Duration: 0.7299728256666667 seconds
+
+Query: select id2, id4, pow(corr(v1, v2), 2) as r2 from df1 group by id2, id4
+Run 1 Duration: 0.296957204 seconds
+Run 2 Duration: 0.282872754 seconds
+Run 3 Duration: 0.239770592 seconds
+Average Duration: 0.2732001833333333 seconds
+
+Query: select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from df1 group by id1, id2, id3, id4, id5, id6
+Run 1 Duration: 1.647792759 seconds
+Run 2 Duration: 1.602093534 seconds
+Run 3 Duration: 1.563583843 seconds
+Average Duration: 1.6044900453333335 seconds
+
+Query: select id1, sum(v1) as v1 from df2 group by id1
+Run 1 Duration: 0.293191389 seconds
+Run 2 Duration: 0.257107443 seconds
+Run 3 Duration: 0.233870439 seconds
+Average Duration: 0.261389757 seconds
+
+Query: select id1, id2, sum(v1) as v1 from df2 group by id1, id2
+Run 1 Duration: 0.871690382 seconds
+Run 2 Duration: 0.857746513 seconds
+Run 3 Duration: 0.824160156 seconds
+Average Duration: 0.851199017 seconds
+
+Query: select id3, sum(v1) as v1, mean(v3) as v3 from df2 group by id3
+Run 1 Duration: 0.201748668 seconds
+Run 2 Duration: 0.215436411 seconds
+Run 3 Duration: 0.20697843 seconds
+Average Duration: 0.20805450299999997 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df2 group by id4
+Run 1 Duration: 0.222890559 seconds
+Run 2 Duration: 0.213002534 seconds
+Run 3 Duration: 0.21308329 seconds
+Average Duration: 0.21632546100000002 seconds
+
+Query: select id6, sum(v1) as v1, sum(v2) as v2, sum(v3) as v3 from df2 group by id6
+Run 1 Duration: 0.223907722 seconds
+Run 2 Duration: 0.183443652 seconds
+Run 3 Duration: 0.195237072 seconds
+Average Duration: 0.2008628153333333 seconds
+
+Query: select id3, max(v1) - min(v2) as range_v1_v2 from df2 group by id3
+Run 1 Duration: 0.197146046 seconds
+Run 2 Duration: 0.187407928 seconds
+Run 3 Duration: 0.197286032 seconds
+Average Duration: 0.19394666866666666 seconds
+
+Query: select id6, largest2_v3 from (select id6, v3 as largest2_v3, row_number() over (partition by id6 order by v3 desc) as order_v3 from df2 where v3 is not null) sub_query where order_v3 <= 2
+Run 1 Duration: 0.517793298 seconds
+Run 2 Duration: 0.534501778 seconds
+Run 3 Duration: 0.51638879 seconds
+Average Duration: 0.522894622 seconds
+
+Query: select id2, id4, pow(corr(v1, v2), 2) as r2 from df2 group by id2, id4
+Run 1 Duration: 0.955301921 seconds
+Run 2 Duration: 0.912934101 seconds
+Run 3 Duration: 0.852140085 seconds
+Average Duration: 0.9067920356666667 seconds
+
+Query: select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from df2 group by id1, id2, id3, id4, id5, id6
+Run 1 Duration: 1.178314952 seconds
+Run 2 Duration: 1.195673789 seconds
+Run 3 Duration: 1.172004057 seconds
+Average Duration: 1.1819975993333334 seconds
+
+Query: select id1, sum(v1) as v1 from df3 group by id1
+Run 1 Duration: 0.678543352 seconds
+Run 2 Duration: 0.687812742 seconds
+Run 3 Duration: 0.683097503 seconds
+Average Duration: 0.683151199 seconds
+
+Query: select id1, id2, sum(v1) as v1 from df3 group by id1, id2
+Run 1 Duration: 1.126015355 seconds
+Run 2 Duration: 1.146086488 seconds
+Run 3 Duration: 1.111920197 seconds
+Average Duration: 1.1280073466666665 seconds
+
+Query: select id3, sum(v1) as v1, mean(v3) as v3 from df3 group by id3
+Run 1 Duration: 0.163802594 seconds
+Run 2 Duration: 0.163110587 seconds
+Run 3 Duration: 0.171317627 seconds
+Average Duration: 0.16607693599999998 seconds
+
+Query: select id4, mean(v1) as v1, mean(v2) as v2, mean(v3) as v3 from df3 group by id4
+Run 1 Duration: 0.674814323 seconds
+Run 2 Duration: 0.70898191 seconds
+Run 3 Duration: 0.719175092 seconds
+Average Duration: 0.7009904416666667 seconds
+
+Query: select id6, sum(v1) as v1, sum(v2) as v2, sum(v3) as v3 from df3 group by id6
+Run 1 Duration: 0.15527984 seconds
+Run 2 Duration: 0.150587355 seconds
+Run 3 Duration: 0.164117306 seconds
+Average Duration: 0.15666150033333334 seconds
+
+Query: select id3, max(v1) - min(v2) as range_v1_v2 from df3 group by id3
+Run 1 Duration: 0.138017703 seconds
+Run 2 Duration: 0.139875254 seconds
+Run 3 Duration: 0.134854512 seconds
+Average Duration: 0.13758248966666667 seconds
+
+Query: select id6, largest2_v3 from (select id6, v3 as largest2_v3, row_number() over (partition by id6 order by v3 desc) as order_v3 from df3 where v3 is not null) sub_query where order_v3 <= 2
+Run 1 Duration: 4.817464746 seconds
+Run 2 Duration: 4.938749527 seconds
+Run 3 Duration: 4.742215764 seconds
+Average Duration: 4.832810012333333 seconds
+
+Query: select id2, id4, pow(corr(v1, v2), 2) as r2 from df3 group by id2, id4
+Run 1 Duration: 1.239138611 seconds
+Run 2 Duration: 1.225424863 seconds
+Run 3 Duration: 1.142267395 seconds
+Average Duration: 1.2022769563333335 seconds
+
+Query: select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from df3 group by id1, id2, id3, id4, id5, id6
+Run 1 Duration: 1.356266902 seconds
+Run 2 Duration: 1.413846511 seconds
+Run 3 Duration: 1.38226684 seconds
+Average Duration: 1.384126751 seconds
+

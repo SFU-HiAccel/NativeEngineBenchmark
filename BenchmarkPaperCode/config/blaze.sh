@@ -1,0 +1,15 @@
+/localhdd/hza214/spark-3.3.3-bin-hadoop3/bin/spark-shell \
+  --conf spark.files.ignoreCorruptFiles=true\
+  --conf spark.blaze.enable=true\
+  --conf spark.default.parallelism=48\
+  --conf spark.sql.shuffle.partitions=48\
+  --conf spark.sql.extensions=org.apache.spark.sql.blaze.BlazeSparkSessionExtension\
+  --conf spark.shuffle.manager=org.apache.spark.sql.execution.blaze.shuffle.BlazeShuffleManager\
+  --conf spark.driver.memory=32g\
+  --conf spark.executor.cores=4 \
+  --conf spark.driver.memoryOverhead=4g\
+  --conf spark.executor.memory=16g\
+  --conf spark.executor.memoryOverhead=8g\
+  --conf spark.memory.offHeap.enabled=true\
+  --conf spark.memory.offHeap.size=100g\
+  --conf spark.local.dir=/localssd/hza214/sparktmp

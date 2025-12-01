@@ -1,0 +1,42 @@
+Query: select id1, sum(v1) as v1 from df1 group by id1
+Run 1 Duration: 0.267629574 seconds
+Run 2 Duration: 0.267629574 seconds
+Run 3 Duration: 0.250160538 seconds
+Average Duration: 0.267629574 seconds
+
+Query: select id1, sum(v1) as v1 from df2 group by id1
+Run 1 Duration: 0.242545251 seconds
+Run 2 Duration: 0.234963801 seconds
+Run 3 Duration: 0.220496769 seconds
+Average Duration: 0.232668607 seconds
+
+Query: select id1, sum(v1) as v1 from df3 group by id1
+Run 1 Duration: 0.24556476 seconds
+Run 2 Duration: 0.229879583 seconds
+Run 3 Duration: 0.242121671 seconds
+Average Duration: 0.23918867133333332 seconds
+
+Query: select id1, sum(v1) as v1 from df4 group by id1
+Run 1 Duration: 0.340229881 seconds
+Run 2 Duration: 0.276336849 seconds
+Run 3 Duration: 0.335561525 seconds
+Average Duration: 0.317376085 seconds
+
+Query: select id1, sum(v1) as v1 from df5 group by id1
+Run 1 Duration: 0.469514658 seconds
+Run 2 Duration: 0.436710343 seconds
+Run 3 Duration: 0.446388877 seconds
+Average Duration: 0.45087129266666665 seconds
+
+Query: select id1, sum(v1) as v1 from df6 group by id1
+Run 1 Duration: 0.563587345 seconds
+Run 2 Duration: 0.604650953 seconds
+Run 3 Duration: 0.520141976 seconds
+Average Duration: 0.5627934246666667 seconds
+
+Query: select id1, sum(v1) as v1 from df7 group by id1
+Run 1 Duration: 0.759645152 seconds
+Run 2 Duration: 0.773993981 seconds
+Run 3 Duration: 0.763487063 seconds
+Average Duration: 0.7657087320000001 seconds
+

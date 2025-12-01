@@ -1,0 +1,80 @@
+Hash Table Size: 8 KBRun 1 Duration: 6.736054812 seconds
+Run 2 Duration: 0.391405858 seconds
+Run 3 Duration: 0.406468422 seconds
+Average Duration: 2.511309697333333 seconds
+
+Hash Table Size: 16 KBRun 1 Duration: 0.734698809 seconds
+Run 2 Duration: 0.480357248 seconds
+Run 3 Duration: 0.342102079 seconds
+Average Duration: 0.519052712 seconds
+
+Hash Table Size: 32 KBRun 1 Duration: 0.630501983 seconds
+Run 2 Duration: 0.303141868 seconds
+Run 3 Duration: 0.319305061 seconds
+Average Duration: 0.4176496373333333 seconds
+
+Hash Table Size: 64 KBRun 1 Duration: 0.608941243 seconds
+Run 2 Duration: 0.290103866 seconds
+Run 3 Duration: 0.272819712 seconds
+Average Duration: 0.390621607 seconds
+
+Hash Table Size: 128 KBRun 1 Duration: 0.622241966 seconds
+Run 2 Duration: 0.311960936 seconds
+Run 3 Duration: 0.323648324 seconds
+Average Duration: 0.419283742 seconds
+
+Hash Table Size: 256 KBRun 1 Duration: 0.622857717 seconds
+Run 2 Duration: 0.297857586 seconds
+Run 3 Duration: 0.356503949 seconds
+Average Duration: 0.4257397506666667 seconds
+
+Hash Table Size: 512 KBRun 1 Duration: 0.665125248 seconds
+Run 2 Duration: 0.328389229 seconds
+Run 3 Duration: 0.334902386 seconds
+Average Duration: 0.442805621 seconds
+
+Hash Table Size: 1024 KBRun 1 Duration: 0.722945595 seconds
+Run 2 Duration: 0.340943908 seconds
+Run 3 Duration: 0.337101158 seconds
+Average Duration: 0.466996887 seconds
+
+Hash Table Size: 2048 KBRun 1 Duration: 0.767753789 seconds
+Run 2 Duration: 0.459439447 seconds
+Run 3 Duration: 0.432003436 seconds
+Average Duration: 0.5530655573333333 seconds
+
+Hash Table Size: 4096 KBRun 1 Duration: 0.934081928 seconds
+Run 2 Duration: 0.580636157 seconds
+Run 3 Duration: 0.556590166 seconds
+Average Duration: 0.6904360836666666 seconds
+
+Hash Table Size: 8192 KBRun 1 Duration: 2.707703689 seconds
+Run 2 Duration: 0.977291209 seconds
+Run 3 Duration: 0.95120667 seconds
+Average Duration: 1.545400522666667 seconds
+
+Hash Table Size: 16384 KBRun 1 Duration: 2.179360925 seconds
+Run 2 Duration: 1.002358269 seconds
+Run 3 Duration: 0.995748599 seconds
+Average Duration: 1.3924892643333333 seconds
+
+Hash Table Size: 32768 KBRun 1 Duration: 2.51586801 seconds
+Run 2 Duration: 1.192824578 seconds
+Run 3 Duration: 1.13738788 seconds
+Average Duration: 1.6153601560000002 seconds
+
+Hash Table Size: 65536 KBRun 1 Duration: 3.866723463 seconds
+Run 2 Duration: 1.285508046 seconds
+Run 3 Duration: 1.241044921 seconds
+Average Duration: 2.1310921433333334 seconds
+
+Hash Table Size: 131072 KBRun 1 Duration: 3.37288534 seconds
+Run 2 Duration: 1.635104391 seconds
+Run 3 Duration: 1.798594684 seconds
+Average Duration: 2.268861471666667 seconds
+
+Hash Table Size: 262144 KBRun 1 Duration: 3.945805915 seconds
+Run 2 Duration: 2.234657893 seconds
+Run 3 Duration: 2.361464369 seconds
+Average Duration: 2.8473093923333335 seconds
+
